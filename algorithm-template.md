@@ -13,6 +13,3 @@ void quick_sort(int q[],int l,int r){
 ``` cpp
 int s[N],t = -1;
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTg3NDg3MDMsMjQ4MDM3NjNdfQ==
--->

@@ -32,7 +32,3 @@ alter table 表名 disable constraint 约束条件名;
 ```sql
 alter table 表名 enable constraint 约束条件名;
 ```
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAwOTczNTgwXX0=
--->
