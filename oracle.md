@@ -11,9 +11,9 @@ select * from all_indexes where table_name='表名';
 ```sql
 delete sequence 序列名;
 ```
-### 3、查看存储过程编译错误
+### 3、查看存储过程编译错误信息
 ```sql
-select * from SYS.USER_ERRORS where NAME='存储过程名称';
+select * from SYS.USER_ERRORS where NAME=upper('存储过程名称');
 ```
 ### 4、约束条件相关操作
 1. 查看表的约束条件
@@ -31,4 +31,11 @@ alter table 表名 disable constraint 约束条件名;
 4. 生效约束条件
 ```sql
 alter table 表名 enable constraint 约束条件名;
+```
+### 5、查看所有存储过程、触发器、视图、表
+```sql
+select * From user_triggers; --所有触发器
+select * From user_procedures; --所有存储过程
+select * From user_views; --所有视图
+select * From user_tables; --所有表
 ```
