@@ -11,9 +11,9 @@ select * from all_indexes where table_name='表名';
 ```sql
 delete sequence 序列名;
 ```
-### 3、查看存储过程编译错误信息
+### 3、查看存储过程/触发器编译错误信息
 ```sql
-select * from SYS.USER_ERRORS where NAME=upper('存储过程名称');
+select * from SYS.USER_ERRORS where NAME=upper('出错的名称（触发器/存储过程m）');
 ```
 ### 4、约束条件相关操作
 1. 查看表的约束条件
@@ -39,3 +39,14 @@ select * From user_procedures; --所有存储过程
 select * From user_views; --所有视图
 select * From user_tables; --所有表
 ```
+### 6、查看当前数据库连接的sid实例
+```sql
+select instance_name from v$instance;
+```
+
+### 7、查看用户拥有的表空间
+
+```sql
+select tablespace_name from user_tablespaces;
+```
+
