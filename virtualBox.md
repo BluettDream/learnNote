@@ -1,4 +1,4 @@
-## 搭建后台运行的centos7服务器
+## 一、搭建后台运行的centos7服务器
 
 ### 1、新建虚拟电脑
 
@@ -149,3 +149,94 @@
 > 点击确定后会弹框，选择接受并保存即可，然后如下图显示就表示远程连接成功
 
 <img src="noteImages\virtualBox\image-20230627121323169.png" alt="image-20230627121323169" style="zoom:67%;" />
+
+## 二、配置初始的centos7
+
+### 1、更新yum
+
+> yum update -y
+
+### 2、安装vim
+
+> yum install -y vim
+
+### 3、解决xshell连接显示警告(The remote SSH server rejected X11 forwarding request)
+
+#### 3.1、安装xorg-x11-xauth
+
+> yum install -y xorg-x11-xauth
+
+#### 3.2、防火墙开放22端口
+
+> firewall-cmd --zone=public --add-port=22/tcp --permanent
+
+#### 3.3、重新加载防火墙
+
+> firewall-cmd --reload
+>
+> 这时候你断开xshell连接，然后重新连接就会发现警告消失了，但是会一个文件不存在的语句（/usr/bin/xauth:  file /root/.Xauthority does not exist）
+
+#### 3.4、创建指定文件(解决/usr/bin/xauth:  file /root/.Xauthority does not exist)
+
+> touch ~/.Xauthority
+
+现在重新连接xshell就不会显示任何报错了
+
+### 4、安装docker
+
+#### 4.1、卸载旧版本
+
+```shell
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+```
+
+#### 4.2、设置库
+
+```shell
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+#### 4.3、安装最新版本docker引擎
+
+```shell
+sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+#### 4.4、启动docker
+
+```shell
+sudo systemctl start docker
+```
+
+#### 4.5、测试docker
+
+```shell
+sudo docker run hello-world
+```
+
+<img src="noteImages\virtualBox\docker启动成功.png" style="zoom:67%;" />
+
+> 出现上述界面代表安装成功
+
+#### 4.6、删除刚下载hello-world镜像
+
+```shell
+docker ps -a
+找到hello wolrd容器对应的id
+docker rm 容器ID
+docker images
+找到hello world镜像的id
+docker rmi 镜像ID
+```
+
+<img src="noteImages\virtualBox\docker删除镜像.png" style="zoom:67%;" />
+
+> 出现上述界面代表删除成功
