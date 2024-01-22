@@ -1,5 +1,3 @@
-
-
 ### 1、高精度
 
 #### 1.1、加法
@@ -167,6 +165,14 @@ int qmi(int a,int k,int p){
         k >>= 1;
     }
     return ret;
+}
+```
+
+#### 2.4、最大公约数
+
+```cpp
+int gcd(int x,int y){
+    return y ? gcd(y,x%y) : x;
 }
 ```
 

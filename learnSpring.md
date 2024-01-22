@@ -10,7 +10,7 @@
 
 ##### 1.BeanFactory：IOC容器基本实现，是spring内部的使用接口，不提供开发人员进行使用（*加载配置文件的时候不会创建对象，在获取对象才去创建对象）
 
-##### 2.ApplicationContext：BeanFactory接口的子接口，提供更多更强大的功能，一般由开发人员进行使用（*加载配置文件的时候就会把在配置文件对象进行创建）
+##### 2.ApplicationContext：BeanFactory接口的子接口，提供更多更强大的功能，一般由开发人员进行使用（*加载配置文件                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       的时候就会把在配置文件对象进行创建）
 
 ### 2.ApplicaitonContext接口实现类
 
