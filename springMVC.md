@@ -134,9 +134,9 @@ ${msg}
 
 > **添加服务器之后，到工程结构，浏览tomcat打包的war包中有没有lib文件，没有就创建一个，把所有需要的jar包放进去**
 
-![](noteImages\tomcat配置1.JPG)
+<img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/tomcat%E9%85%8D%E7%BD%AE1.JPG" style="zoom:67%;" />
 
-![](noteImages\tomcat配置2.JPG)
+<img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/tomcat%E9%85%8D%E7%BD%AE2.JPG" style="zoom:80%;" />
 
 #### 7.运行结果
 

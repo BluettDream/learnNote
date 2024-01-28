@@ -332,7 +332,7 @@ public void test3(){
 
 ## 5、日志
 
-<img src="noteImages\mybatis日志.JPG" style="zoom:150%;" />
+![](https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/mybatis%E6%97%A5%E5%BF%97.JPG)
 
 > mybatis配置xml文件，使用settings标签选择生成日志功能，常见的日志有以下几种：
 >
@@ -410,7 +410,7 @@ List<User> getUser();
 
 + 创建数据库
 
-<img src="noteImages\一对多数据库.jpg" alt="image-20210722134647526" style="zoom:150%;" />
+<img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%95%B0%E6%8D%AE%E5%BA%93.jpg" style="zoom:150%;" />
 
 ### 7.1、多对一
 
@@ -597,5 +597,5 @@ List<User> getUser();
   + 新的会话查询信息，可以从二级缓存中获取内容
   + 不同的mapper查出的数据会放在自己对应的缓存（map）中
 
-![image-20210723131637445](noteImages\缓存.jpg)
+![](https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/%E7%BC%93%E5%AD%98.jpg)
 

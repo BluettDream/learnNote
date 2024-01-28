@@ -362,7 +362,7 @@ public void testT2(){
 }
 ```
 
-<img src="noteImages/bean单实例结果.JPG" alt="输出结果" style="zoom:150%;" />
+<img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/bean%E5%8D%95%E5%AE%9E%E4%BE%8B%E7%BB%93%E6%9E%9C.JPG" style="zoom:150%;" />
 
 ##### 2.设置bean为单实例或多实例
 
@@ -380,7 +380,7 @@ public void testT2(){
        </bean>
        ```
 
-       <img src="noteImages/bean多实例结果.JPG" alt="结果" style="zoom:150%;" />
+       <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/bean%E5%A4%9A%E5%AE%9E%E4%BE%8B%E7%BB%93%E6%9E%9C.JPG" style="zoom:150%;" />
 
 3. singleton和prototype区别
 
@@ -471,11 +471,11 @@ spring配置文件：
 
 > 五步运行结果截图示例：
 
-<img src="noteImages/bean生命周期.JPG" alt="运行结果" style="zoom:150%;" />
+<img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.JPG" style="zoom:150%;" />
 
 > 配置后置处理器，七步运行结果截图示例：
 
-<img src="noteImages/bean生命周期2.JPG" style="zoom:150%;" />
+<img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F2.JPG" style="zoom:150%;" />
 
 ### 三、xml自动装配
 
@@ -767,7 +767,7 @@ public void test2(){
 
 ### 一、使用登录流程展示AOP概念
 
-<img src="noteImages\AOP概念.JPG" style="zoom:150%;" />
+![](https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/AOP%E6%A6%82%E5%BF%B5.JPG)
 
 ## 二、AOP底层原理
 
@@ -779,13 +779,13 @@ public void test2(){
 
 > 创建接口实现类代理对象，增强类的方法
 
-<img src="noteImages\有接口代理.JPG" style="zoom:150%;" />
+![](https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/%E6%9C%89%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86.JPG)
 
 ##### 2.无接口情况：使用CGLIB动态代理
 
 > 创建子类的代理对象，增强类的方法
 
-<img src="noteImages\无接口代理.JPG" style="zoom:150%;" />
+![](https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/%E6%97%A0%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86.JPG)
 
 ### 二、 JDK动态代理实现
 
