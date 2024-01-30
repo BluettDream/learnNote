@@ -19,7 +19,7 @@ sudo yum remove docker \
 
 ```shell
 sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
 
 ## 安装最新版本docker引擎
@@ -66,3 +66,31 @@ docker compose version
 ```
 
 > 出现docker compose版本号即为成功
+
+# 配置docker对外开放
+
+## 修改配置文件
+
+```shell
+vim /usr/lib/systemd/system/docker.service
+```
+
+输入/ExecStart，注释掉这一行，复制然后修改为
+
+```sh
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock -H fd:// --containerd=/run/containerd/containerd.sock
+```
+
+## 重载docker
+
+```sh
+systemctl daemon-reload && systemctl restart docker
+```
+
+## 防火墙开放2375端口
+
+```sh
+firewall-cmd --zone=public --add-port=2375/tcp --permanent
+firewall-cmd --reload
+```
+

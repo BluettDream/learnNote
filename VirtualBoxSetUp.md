@@ -1,5 +1,11 @@
 ## 一、搭建后台运行的centos7服务器
 
+[VirtualBox官网](https://www.virtualbox.org/wiki/Downloads) ；[centOS7镜像网站列表](https://www.centos.org/download/mirrors/) ；[浙大镜像网站链接](https://mirrors.zju.edu.cn/centos/7/isos/x86_64/)
+
+首先安装VirtualBox虚拟机，最新版就可以。下载centos7镜像文件，首先打开网站列表，搜索框输入Asia寻找亚洲地区，然后找一个链接点进去，选择版本7，选择isos目录，无脑往下点，然后选择CentOS-7-x86_64-Minimal-2009.iso 镜像文件，下载即可（也可直接点击浙大的链接，就能直接选对应iso文件下载了）
+
+> minimal是最小体积的centos，无界面，想要有界面下载everything或者dvd都可以
+
 ### 1、新建虚拟电脑
 
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627105021674.png" style="zoom:70%;" />
@@ -18,6 +24,8 @@
 
 ### 5、配置服务器
 
+> 对新建的服务器右键选择设置打开以下页面
+
 #### 5.1、选择系统，勾选启动顺序中的网络，然后点击光驱，点击右边的向上箭头将光驱放到第一位
 
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627111356990.png" style="zoom:80%;" />
@@ -28,11 +36,11 @@
 
 > 注：网卡1也要已经启动网络连接，连接方式默认为网络地址转换NAT即可
 
-#### 5.3、点击右下角确定即配置完毕，配置完成之后的主界面如下图
+#### 5.3、点击右下角确定即配置完毕，配置完成之后的主界面往下滑动如下图
 
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627111819220.png" style="zoom:67%;" />
 
-> 注：马赛克是因为这个地方的教程是后续添加的，soψ(._. )>
+> 注：马赛克是因为这个地方的教程是后续添加的，so ψ(._. )>
 
 ### 6、选中服务器，点击右上角启动，启动服务器(第一次需正常图形化界面启动)
 
@@ -181,3 +189,18 @@
 > touch ~/.Xauthority
 
 现在重新连接xshell就不会显示任何报错了
+
+## 三、配置windows一键运行
+
+编写启动的bat文件
+
+```bash
+"VirtualBox文件路径\VBoxManager.exe" startvm "centos7(填写自己起的名字)" --type headless
+```
+
+编写停止的bat文件
+
+```bash
+"VirtualBox文件路径\VBoxManager.exe" controlvm "centos7(填写自己起的名字)" poweroff
+```
+
