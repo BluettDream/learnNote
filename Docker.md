@@ -94,3 +94,9 @@ firewall-cmd --zone=public --add-port=2375/tcp --permanent
 firewall-cmd --reload
 ```
 
+# 配置docker开机自启
+
+```sh
+systemctl enable docker
+```
+
