@@ -6,7 +6,7 @@
 
 > minimal是最小体积的centos，无界面，想要有界面下载everything或者dvd都可以
 
-**Warning:** 新版VirtualBox安装可能会出现Invalid installation directory错误, 直接给出省流解决办法，管理员打开cmd控制台，一定是cmd不是powershell，然后输入以下命令：
+**Warning:** VirtualBox7.0之后的版本安装可能会出现Invalid installation directory错误, 直接给出省流解决办法，管理员打开cmd控制台，一定是cmd不是powershell，然后输入以下命令：
 
 ```bash
 icacls D:\VBox /reset /t /c
@@ -23,6 +23,19 @@ icacls D:\app /reset /t /c
 icacls D:\app\VBox /reset /t /c
 ```
 这两条命令，你的安装目录层级有多深就要幂等执行多少条，所以建议一定要安装在最上层目录下！该解决方案来源于[官网](https://forums.virtualbox.org/viewtopic.php?t=112067)，为什么要这么做里面也有讨论和说明。
+
+> 命令解释说明：
+> - icacls: 用于显示或修改访问控制列表 (ACL)。
+> - /reset: 用于将 ACL 重置为默认的权限。
+> - /t: 递归处理所有子目录和文件。
+> - /c: 继续执行命令，即使发生错误。
+> - /inheritance:d: 移除继承的权限。
+> - /grant: 授予访问权限。
+> - *S-1-5-32-545: Users组的SID。
+> - (OI)(CI)(RX): 对象继承、容器继承、读取和执行权限。
+> - /deny: 拒绝访问权限。
+> - *S-1-5-11: Authenticated Users组的SID。
+> - (DE,WD,AD,WEA,WA): 删除、写入数据、添加数据、写入扩展属性、写入属性权限。
 
 ### 1、新建虚拟电脑
 
