@@ -2,7 +2,7 @@
 
 [VirtualBox官网](https://www.virtualbox.org/wiki/Downloads) ；[centOS7镜像网站列表](https://www.centos.org/download/mirrors/) ；[清华大学镜像网站链接](https://mirrors.tuna.tsinghua.edu.cn/centos-vault/7.9.2009/isos/x86_64/)
 
-首先安装VirtualBox虚拟机，最新版就可以。下载centos7镜像文件，首先打开网站列表，搜索框输入Asia寻找亚洲地区，然后找一个链接点进去，选择版本7，选择isos目录，无脑往下点，然后选择CentOS-7-x86_64-Minimal-2009.iso 镜像文件，下载即可（也可直接点击浙大的链接，就能直接选对应iso文件下载了）
+首先安装VirtualBox虚拟机，最新版就可以。下载centos7镜像文件，首先打开网站列表，搜索框输入Asia寻找亚洲地区，然后找一个链接点进去，选择版本7，选择isos目录，无脑往下点，然后选择CentOS-7-x86_64-Minimal-2009.iso 镜像文件，下载即可（也可直接点击清华大学的链接，就能直接选对应iso文件下载了）
 
 > minimal是最小体积的centos，无界面，想要有界面下载everything或者dvd都可以
 
