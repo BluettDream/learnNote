@@ -49,20 +49,20 @@
    np.eye(n,m,k=负数/0/正数)
    ```
 
-7. 创建一个矩阵（基于另外一个矩阵重复reps次）
+8. 创建一个矩阵（基于另外一个矩阵重复reps次）
 
    ```python
    # 重复矩阵A(reps=数字:单纯重复次数,reps=(y,x):重复行y次,列x次)
    np.tile(A,reps)
    ```
 
-8. 矩阵相乘
+9. 矩阵相乘
 
    ```python
    np.dot(A,B)
    ```
 
-9. 获取日期
+10. 获取日期
 
     ```python
     #(今天,昨天,明天)
@@ -73,38 +73,38 @@
     np.arange('某个月','下个月',dtype='datetime64[D]')
     ```
 
-10. 随机生成均匀分布的矩阵
+11. 随机生成均匀分布的矩阵
 
     ```python
     np.random.uniform(low,high,size)
     ```
 
-11. 生成不包含x,y的在x到y的z个数的线性数组
+12. 生成不包含x,y的在x到y的z个数的线性数组
 
     ```python
     np.linspace(x,y,z,endpoint=False)[1:]
     ```
 
-12. 快速计算小数组求和
+13. 快速计算小数组求和
 
     ```python
     Z = np.arange(10)
     np.add.reduce(Z)
     ```
 
-13. 矩阵只读
+14. 矩阵只读
 
     ```python
     Z.flags.writeable = False
     ```
 
-14. 将矩阵的最大值改成x
+15. 将矩阵的最大值改成x
 
     ```python
     Z[Z.argmax()] = x
     ```
 
-15. 找出矩阵中最接近x的值
+16. 找出矩阵中最接近x的值
 
     ```python
     Z.flat[np.abs(Z - x).argmin()]
