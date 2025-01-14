@@ -6,6 +6,24 @@
 
 > minimal是最小体积的centos，无界面，想要有界面下载everything或者dvd都可以
 
+**Warning:** 新版VirtualBox安装可能会出现Invalid installation directory错误, 直接给出省流解决办法，管理员打开cmd控制台，一定是cmd不是powershell，然后输入以下命令：
+
+```bash
+icacls D:\VBox /reset /t /c
+icacls D:\VBox /inheritance:d /t /c
+icacls D:\VBox /grant *S-1-5-32-545:(OI)(CI)(RX)
+icacls D:\VBox /deny *S-1-5-32-545:(DE,WD,AD,WEA,WA)
+icacls D:\VBox /grant *S-1-5-11:(OI)(CI)(RX)
+icacls D:\VBox /deny *S-1-5-11:(DE,WD,AD,WEA,WA)
+```
+D:\VBox是你的VirtualBox安装目录，最好是在盘符根目录下创建安装目录，否则你就要递归所有目录执行一遍上述命令！！！且在执行上述命令时会更改对应目录下的所有文件权限。例如：D:\app\VBox是你的安装目录，则需要执行：
+
+```bash
+icacls D:\app /reset /t /c
+icacls D:\app\VBox /reset /t /c
+```
+这两条命令，你的安装目录层级有多深就要幂等执行多少条，所以建议一定要安装在最上层目录下！该解决方案来源于[官网](https://forums.virtualbox.org/viewtopic.php?t=112067)，为什么要这么做里面也有讨论和说明。
+
 ### 1、新建虚拟电脑
 
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627105021674.png" style="zoom:70%;" />
