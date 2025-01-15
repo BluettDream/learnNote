@@ -16,6 +16,7 @@ icacls D:\VBox /deny *S-1-5-32-545:(DE,WD,AD,WEA,WA)
 icacls D:\VBox /grant *S-1-5-11:(OI)(CI)(RX)
 icacls D:\VBox /deny *S-1-5-11:(DE,WD,AD,WEA,WA)
 ```
+
 D:\VBox是你的VirtualBox安装目录，最好是在盘符根目录下创建安装目录，否则你就要递归所有目录执行一遍上述命令！！！且在执行上述命令时会更改对应目录下的所有文件权限。例如：D:\app\VBox是你的安装目录，则需要执行：
 
 ```bash
@@ -164,10 +165,13 @@ icacls D:\app\VBox /reset /t /c
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627115451891.png" style="zoom:67%;" />
 
 ##### 17.2.2、编辑第二块网卡配置文件(即ifcfg-enp0s8，如果没有请先返回第5条配置服务器)
+
 如果返回之后配置完毕使用ip addr命令能够显示两张网卡，但是net-word-scripts中没有ifcfg-enp0s8文件，那么就使用以下命令生成一个网卡配置文件：
+
 ```bash
 nmcli con add con-name enp0s8 type ethernet ifname enp0s8
 ```
+
 这个时候就会出现这个配置文件了，然后进行下列操作。
 
 > vi /etc/sysconfig/network-scripts/ifcfg-enp0s8
@@ -201,6 +205,23 @@ nmcli con add con-name enp0s8 type ethernet ifname enp0s8
 ### 1、更新yum
 
 > yum update -y
+
+如果命令执行失败，提示yum源错误，则需要下载[yum华为云镜像源](https://mirrors.huaweicloud.com/repository/conf/CentOS-7-anon.repo)，然后备份/etc/yum.repos.d下的所有文件：
+
+```bash
+cd /etc/yum.repos.d 
+find . -type f exec cp {} {}.bak \;
+```
+
+将下载的文件上传到该目录下，原有的CentOS-Base.repo文件删除，上传的文件重命名为CentOS-Base.repo，执行以下命令：
+
+```bash
+yum clean all
+yum makecache
+yum repolist all
+```
+
+这时候就可以重新执行yum update -y命令了
 
 ### 2、安装vim
 
