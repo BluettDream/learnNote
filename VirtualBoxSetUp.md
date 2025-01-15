@@ -63,6 +63,8 @@ icacls D:\app\VBox /reset /t /c
 
 #### 5.2、选择网络，选择网卡2，点击启动网络连接，连接方式选择仅主机Host-only网络
 
+> 这一步如果没有显示其余网卡，则可以先跳过，等安装完系统之后关闭虚拟机，然后再次打开设置，就会显示其余网卡了
+
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627111507975.png" style="zoom:67%;" />
 
 > 注：网卡1也要已经启动网络连接，连接方式默认为网络地址转换NAT即可
