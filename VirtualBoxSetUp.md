@@ -164,10 +164,15 @@ icacls D:\app\VBox /reset /t /c
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627115451891.png" style="zoom:67%;" />
 
 ##### 17.2.2、编辑第二块网卡配置文件(即ifcfg-enp0s8，如果没有请先返回第5条配置服务器)
+如果返回之后配置完毕使用ip addr命令能够显示两张网卡，但是net-word-scripts中没有ifcfg-enp0s8文件，那么就使用以下命令生成一个网卡配置文件：
+```bash
+nmcli con add con-name enp0s8 type ethernet ifname enp0s8
+```
+这个时候就会出现这个配置文件了，然后进行下列操作。
 
 > vi /etc/sysconfig/network-scripts/ifcfg-enp0s8
 >
-> 编辑红框区域，如果没有就自己添加（vi编写文件，保存命令自己搜索）
+> 编辑红框区域，如果没有就自己添加（vi编写文件，:wq保存退出）
 
 <img src="https://raw.githubusercontent.com/BluettDream/ImgBed01/master/learn/image-20230627120450227.png" style="zoom:67%;" />
 
