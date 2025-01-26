@@ -104,3 +104,5 @@ log4j2 config file
     </Loggers>
 </Configuration>
 ```
+
+log4j2 pattern format [website](https://logging.apache.org/log4j/2.x/manual/pattern-layout.html)
