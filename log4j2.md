@@ -1,4 +1,4 @@
-log4j2 pattern format [website](https://logging.apache.org/log4j/2.x/manual/pattern-layout.html)
+> log4j2 pattern format [website](https://logging.apache.org/log4j/2.x/manual/pattern-layout.html)
 
 #### config xml file
 
@@ -155,4 +155,10 @@ Configuration:
         level: warn
       - name: org.mybatis
         level: debug
+```
+
+#### springboot指定yaml配置文件
+```yaml
+logging:
+  config: classpath:log4j2.yaml
 ```
