@@ -1,4 +1,6 @@
-log4j2 config file
+log4j2 pattern format [website](https://logging.apache.org/log4j/2.x/manual/pattern-layout.html)
+
+#### config xml file
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -105,4 +107,52 @@ log4j2 config file
 </Configuration>
 ```
 
-log4j2 pattern format [website](https://logging.apache.org/log4j/2.x/manual/pattern-layout.html)
+#### config yaml file
+
+```yaml
+Configuration:
+  status: warn
+  Properties:
+    Property:
+      - name: LOG_HOME
+        value: logs
+      - name: PATTERN_FORMAT
+        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5level] %c{1.5.*}.%M(%L) - %msg%n%throwable"
+  Appenders:
+    Console:
+      name: ConsoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: ${PATTERN_FORMAT}
+    RollingRandomAccessFile:
+      name: FileAppender
+      fileName: ${LOG_HOME}/app.log
+      filePattern: "${LOG_HOME}/%d{yyyy-MM}-week-${date:w}/%d{yyyy-MM-dd}-%i.log.zip"
+      PatternLayout:
+        pattern: ${PATTERN_FORMAT}
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: 50MB
+        TimeBasedTriggeringPolicy:
+          interval: 1
+          modulate: true
+      DefaultRolloverStrategy:
+        max: 30
+        Delete:
+          basePath: ${LOG_HOME}
+          maxDepth: 3
+          IfFileName:
+            glob: "*/week-*/*.log.zip"
+
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        - ref: ConsoleAppender
+        - ref: FileAppender
+    Logger:
+      - name: org.apache
+        level: warn
+      - name: org.mybatis
+        level: debug
+```
