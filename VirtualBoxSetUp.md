@@ -284,3 +284,5 @@ try{
 - $TaskTrigger: 任务触发器，默认是在系统启动时触发，随机延迟15秒
 - $TaskSettings: 任务设置，默认是使用交流电才启动任务,如果使用电池则不启动。执行时间不限制，重启次数2次，重启间隔1分钟
 - $TaskPrincipal: 任务主体，默认是SYSTEM用户
+
+将下面复制到txt文件中,重命名为startvm.ps1，放在你想要的目录下，然后以管理员身份运行powershell，执行此脚本,输出create startup task 'StartVM-remote1' success!即成功
