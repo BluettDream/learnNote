@@ -262,13 +262,13 @@ if (-not (Test-Path $VBoxManagePath)) {
     exit 1
 }
 $ActionArgument = "startvm ""$VMName"" --type headless"
-$TaskAction = New-ScheduledTaskAction -Execute $VBoxManagePath -Argument $ActionArgument
-$TaskTrigger = New-ScheduledTaskTrigger -AtStartup -RandomDelay (New-TimeSpan -Seconds 15)
-$TaskSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries:$false -DontStopIfGoingOnBatteries:$false -RunOnlyIfNetworkAvailable -ExecutionTimeLimit ([System.TimeSpan]::Zero) -RestartCount 2 -RestartInterval (New-TimeSpan -Minutes 1)
-$TaskPrincipal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -RunLevel Highest
+$TaskAction = New-ScheduledTaskAction -Execute $VBoxManagePath -Argument $ActionArgument -WorkingDirectory (Split-Path $VBoxManagePath)
+$TaskTrigger = New-ScheduledTaskTrigger -AtLogon
+$TaskSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries:$false -DontStopIfGoingOnBatteries:$false
+$TaskPrincipal = New-ScheduledTaskPrincipal -UserId "Blue" -RunLevel Highest
 $ScheduledTask = New-ScheduledTask -Action $TaskAction -Trigger $TaskTrigger -Settings $TaskSettings -Principal $TaskPrincipal
 try{
-	Register-ScheduledTask -TaskName $TaskName -InputObject $ScheduledTask -User "SYSTEM" -Force
+	Register-ScheduledTask -TaskName $TaskName -InputObject $ScheduledTask -Force
 	Write-Host "create startup task '$TaskName' success!"
 } catch {
 	Write-Error "create or update task fail:$($_.Exception.Message)"
@@ -277,12 +277,12 @@ try{
 ```
 
 参数解释说明：
-- $VBoxManagePath: VirtualBox的安装路径，修改为你自己的安装路径
-- $VMName: 虚拟机的名称，默认是remote1，修改为你自己的虚拟机名称
+- $VBoxManagePath: VirtualBoxManager的路径，修改为你自己的路径
+- $VMName: 虚拟机的名称，修改为你自己的虚拟机名称
 - $TaskName: 任务名称，默认是StartVM-$VMName
-- $TaskAction: 任务执行的操作，默认是启动虚拟机
-- $TaskTrigger: 任务触发器，默认是在系统启动时触发，随机延迟15秒
-- $TaskSettings: 任务设置，默认是使用交流电才启动任务,如果使用电池则不启动。执行时间不限制，重启次数2次，重启间隔1分钟
-- $TaskPrincipal: 任务主体，默认是SYSTEM用户
+- $TaskAction: 任务执行的操作，在目标工作目录启动虚拟机
+- $TaskTrigger: 任务触发器，系统启动时触发
+- $TaskSettings: 任务设置，默认是使用交流电才启动任务,如果使用电池则不启动
+- $TaskPrincipal: 任务主体，UserId是当前登录的用户名(最好具有管理员权限)，RunLevel是最高权限
 
-将下面复制到txt文件中,重命名为startvm.ps1，放在你想要的目录下，然后以管理员身份运行powershell，执行此脚本,输出create startup task 'StartVM-remote1' success!即成功
+复制到txt文件中,重命名为startvm.ps1，放在你想要的目录下，然后以管理员身份运行powershell，执行此脚本:脚本所在目录\startvm.ps1直接回车,输出create startup task 'StartVM-remote1' success!即成功
