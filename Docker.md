@@ -44,6 +44,33 @@ sudo docker run hello-world
 
 > 出现上述界面代表安装成功
 
+若出现拉取失败，且显示访问的是docker官方镜像，则需要配置docker加速器
+
+```shell
+sudo mkdir -p /etc/docker
+vim /etc/docker/daemon.json
+```
+
+在daemon.json中添加如下内容(一定要注意json格式问题！否则docker可能启动失败或不生效)：
+
+```json
+{
+  "registry-mirrors": [
+	"https://7sbs9twe.mirror.aliyuncs.com",
+	"https://docker.m.daocloud.io",
+	"https://hub-mirror.c.163.com",
+	"https://registry.aliyuncs.com"
+  ]
+}
+```
+
+然后执行
+
+```shell
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
 ## 删除下载的镜像
 
 ```shell
